@@ -1,0 +1,191 @@
+@charset "UTF-8";
+
+/* =============================================================== 
+	*** base *** 
+=============================================================== */
+
+html {
+background:#f8f6e7;
+}
+body {
+min-width:1110px;
+font-family:"ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","メイリオ",Meiryo,Osaka,"ＭＳ Ｐゴシック","MS PGothic",sans-serif;
+text-align:center;
+line-height:1.6;
+}
+#container {
+width:1100px;
+margin:0 auto;
+padding:0 5px 0 5px;
+text-align:left;
+background:#ffffff url(/common/images/bg_container.gif) repeat-y 0 0;
+}
+
+/* =============================================================== 
+	*** header *** 
+=============================================================== */
+
+header {
+position:relative;
+width:1100px;
+height:140px;
+background:url(/common/images/bg_header.gif) repeat-x 0 0;
+z-index:10;
+}
+header #utilityNav {
+overflow:hidden;
+float:right;
+height:30px;
+padding:7px 38px 0 0;
+}
+header #utilityNav li {
+float:left;
+padding:0 25px 0 0;
+}
+header #utilityNav li a {
+color:#9c9d9d;
+text-decoration: none;
+}
+header #utilityNav li a:hover {
+text-decoration: underline;
+}
+header #utilityNav li.facebook a {
+padding:0 0 0 18px;
+background:url(/common/images/icn_facebook.gif) no-repeat 0 50%;
+}
+header #utilityNav li.twitter a {
+padding:0 0 0 18px;
+background:url(/common/images/icn_twitter.gif) no-repeat 0 50%;
+}
+header .logo {
+clear:both;
+float:left;
+padding:30px 0 0 66px;
+}
+header #globalNav {
+float:left;
+margin:29px 0 0 32px;
+padding:0 0 0 1px;
+background:url(/common/images/bg_gnav.gif) no-repeat 0 0;
+}
+header #globalNav li {
+float:left;
+padding:0 1px 0 0;
+background:url(/common/images/bg_gnav.gif) no-repeat 100% 0;
+}
+header #globalNav li.donate {
+background:none;
+padding:5px 0 0 25px;
+}
+header #globalNav li ul.menuArea {
+display:none;
+position:absolute;
+left:0;
+top:140px;
+width:830px;
+padding:20px 135px 15px 135px;
+background:#f4f5f5;
+text-align:center;
+z-index:100;
+}
+header #globalNav li ul.menuArea.about {
+width:1000px;
+padding:20px 50px 15px 50px;
+background:#f4f5f5;
+text-align:center;
+}
+header #globalNav li ul.menuArea li {
+float:none;
+display:inline-block;
+padding:0 12px 6px 13px;
+line-height:1;
+background:none;
+/display:inline;
+/zoom:1;
+}
+header #globalNav li ul.menuArea li img {
+vertical-align:middle;
+}
+
+
+/* =============================================================== 
+	*** footer *** 
+=============================================================== */
+
+footer {
+background:#595757;
+}
+footer a {
+color:#9c9d9d;
+}
+footer #footerMenu {
+padding:45px 0 30px 26px;
+}
+footer #footerMenu li {
+float:left;
+width:160px;
+padding:0 0 0 42px;
+color:#d9dada;
+}
+footer #footerMenu li p {
+min-height:40px;
+padding:25px 0 10px 0;
+}
+footer #footerMenu li p a {
+color:#dc631f;
+}
+footer #footerMenu li ul li {
+float:none;
+padding:0 0 5px 12px;
+background:url(/common/images/icn_footer_link.gif) no-repeat 1px 5px;
+}
+footer #footerUtilityNav {
+padding:0 0 40px 0;
+text-align:center;
+}
+footer #footerUtilityNav li {
+display:inline-block;
+padding:0 20px 0 0;
+/display:inline;
+/zoom:1;
+}
+footer #footerUtilityNav li.facebook a {
+padding:0 0 0 18px;
+background:url(/common/images/icn_facebook_ftr.gif) no-repeat 0 50%;
+}
+footer #footerUtilityNav li.twitter a {
+padding:0 0 0 18px;
+background:url(/common/images/icn_twitter_ftr.gif) no-repeat 0 50%;
+}
+footer p.copyRight {
+padding:0 0 24px 0;
+color:#9c9d9d;
+text-align:center;
+}
+
+/* =============================================================== 
+	*** contents *** 
+=============================================================== */
+
+#contens {
+}
+
+/* ===================== main ===================== */
+
+#main {
+padding: 30px 0 0 0;
+background: url(/common/images/bg_mainvi_2nd.gif) repeat-x top;
+zoom:1;
+}
+#top #main {
+padding: 0 0 0 0;
+background: none;
+}
+.top #main {
+background: none;
+}
+
+/* ===================== side ===================== */
+
+#side {
+}

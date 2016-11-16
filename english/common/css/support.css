@@ -1,0 +1,532 @@
+@charset "utf-8";
+
+
+/* ============================== support style ============================== */
+
+/****** categoryHead ******/
+#support .categoryHead {
+padding:30px 100px 50px 100px;
+}
+#support .categoryHead h1 {
+margin:0 0 30px 0;
+}
+#support .categoryHead .text {
+float:left;
+width:570px;
+}
+#support .categoryHead .text p {
+margin:0 0 30px 0;
+}
+#support .categoryHead .text ul {
+margin:55px 0 10px 0;
+}
+#support .categoryHead .text ul li {
+display:inline-block;
+margin:0 20px 0 0;
+/display:inline;
+/zoom:1;
+}
+#support .categoryHead .image {
+float:right;
+margin:-14px 0 0 0;
+}
+
+/****** btnBox ******/
+#support .btnBox {
+clear:both;
+margin:40px 0 0 0;
+padding:20px 13px 15px 20px;
+background:#f4f5f5;
+}
+#support .btnBox p {
+float:left;
+width:640px;
+padding:5px 0 0 0;
+color:#006934;
+font-weight:bold;
+}
+#support .btnBox .btn {
+float:right;
+width:206px;
+padding:0;
+}
+
+/* --------------- top --------------- */
+#support .supportList {
+padding:0 100px 0 100px;
+}
+#support .supportList .innerBox {
+background:url(/support/images/bg_support_list.gif) repeat-y 450px 0;
+}
+#support .supportList .alignBox {
+margin:0 0 37px 0;
+border-bottom:1px solid #ececec;
+}
+#support .supportList section {
+position:relative;
+float:left;
+width:450px;
+padding:0 0 35px 0;
+}
+#support .supportList section.food,
+#support .supportList section.company {
+width:410px;
+padding:0 0 35px 40px;
+}
+#support .supportList section .text {
+padding:0 0 35px 0;
+}
+#support .supportList section.donate .text {
+width:294px;
+}
+#support .supportList section.food .text {
+width:240px;
+}
+#support .supportList section.time .text {
+width:255px;
+}
+#support .supportList section.company .text {
+width:260px;
+}
+#support .supportList section .text h2 {
+margin:0;
+padding:0 0 22px 0;
+}
+#support .supportList section .text p {
+padding:0 0 14px 0;
+}
+#support .supportList section.company .text p {
+width:223px;
+}
+#support .supportList section .image {
+position:absolute;
+}
+#support .supportList section.donate .image {
+right:3px;
+top:20px;
+}
+#support .supportList section.food .image {
+right:-41px;
+top:30px;
+}
+#support .supportList section.time .image {
+right:30px;
+top:50px;
+}
+#support .supportList section.company .image {
+right:-1px;
+top:89px;
+}
+#support .supportList section p.btn {
+position:absolute;
+bottom:37px;
+}
+#support .supportList section.other {
+float:none;
+width:900px;
+padding:0 0 25px 0;
+}
+#support .supportList section.other .text {
+float:left;
+width:380px;
+}
+#support .supportList section.other .image {
+position:static;
+float:right;
+width:490px;
+}
+#support .supportList section.other .image p {
+float:left;
+padding:0 0 0 23px;
+}
+#support .supportList section.other p.btn {
+position:static;
+padding:10px 0 0 0;
+}
+
+/* --------------- donate --------------- */
+#support .supportDonate .categoryHead {
+padding:30px 100px 22px 100px;
+}
+#support .supportDonate .categoryHead .image {
+margin:-25px 68px 10px 0;
+}
+#support .supportDonate .donateBox01 ul {
+padding:35px 0 53px 0;
+}
+#support .supportDonate .donateBox01 ul li {
+float:left;
+padding:0 24px 0 0;
+}
+#support .supportDonate .donateBox01 ul li.rgt {
+padding:0;
+}
+#support .supportDonate .donateBox01 ul li img {
+padding:0 0 0 12px;
+vertical-align:middle;
+}
+#support .supportDonate .donateBox01 .creditArea {
+margin:0 0 0 351px;
+}
+#support .supportDonate .creditArea p {
+float:left;
+width:200px;
+}
+#support .supportDonate .creditArea p.button {
+width:205px;
+padding:0 10px 0 0;
+}
+#support .supportDonate .creditArea ul {
+float:left;
+padding:15px 15px 0 0;
+}
+#support .supportDonate .creditArea ul li {
+float:none;
+display:inline;
+padding:0 5px 0 0;
+}
+#support .supportDonate .creditArea ul li img {
+padding:0;
+vertical-align:middle;
+}
+#support .supportDonate .donateBox02 section {
+margin:55px 0 0 0;
+}
+#support .supportDonate .donateBox02 section p.formBox {
+float:left;
+width:338px;
+padding:10px 10px 0 3px;
+}
+#support .supportDonate .donateBox02 section p.formBox input {
+width:240px;
+padding:3px 5px;
+border:1px solid #898989;
+background:none;
+font-size:100%;
+font-family:"ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","メイリオ",Meiryo,Osaka,"ＭＳ Ｐゴシック","MS PGothic",sans-serif;
+ime-mode:inactive;
+}
+#support .supportDonate .donateBox02 section p.formBox img {
+padding:0 0 0 15px;
+}
+#support .supportDonate .donateBox02 section {
+overflow:hidden;
+width:900px;
+}
+#support .supportDonate .donateBox02 section.general03 div {
+width:985px;
+margin:35px 0 25px 0;
+}
+#support .supportDonate .donateBox02 section section {
+float:left;
+width:406px;
+margin:0 42px 0 0;
+padding:0 42px 0 0;
+border-right:1px solid #ececec;
+}
+#support .supportDonate .donateBox02 section section h4 {
+margin:0 0 25px 0;
+color:#006934;
+font-weight:bold;
+}
+
+/* --------------- food --------------- */
+#support .supportFood .categoryHead {
+padding:30px 100px 22px 100px;
+}
+#support .supportFood .flowArea h3 {
+margin:0 0 12px 0;
+color:#006934;
+font-weight:bold;
+}
+#support .supportFood .flowArea ul li {
+float:left;
+width:202px;
+padding:0 0 0 32px;
+text-align:center;
+background:url(/support/food/images/bg_flow_arw.gif) no-repeat 0 73px;
+}
+#support .supportFood .flowArea ul li.left {
+margin:0 0 0 -5px;
+padding:0;
+background:none;
+}
+#support .supportFood .flowArea ul li p img {
+margin:0 0 30px 0;
+}
+#support .supportFood .individualList {
+margin:0 0 40px 0;
+}
+#support .supportFood .individualList p {
+float:left;
+width:241px;
+padding:0 40px 0 0;
+}
+#support .supportFood .individualList ul {
+float:left;
+width:615px;
+}
+
+/****** emergency_food_supplies_faq ******/
+#support .supportFoodFaq {
+padding:30px 100px 0 100px;
+}
+#support .supportFoodFaq h1 {
+margin:0 0 60px 0;
+}
+#support .supportFoodFaq section {
+margin:0 0 60px 0;
+}
+#support .supportFoodFaq section h2 {
+margin:0 0 13px 24px;
+text-indent:-24px;
+}
+#support .supportFoodFaq section p {
+margin:0 0 20px 0;
+}
+
+/* --------------- time --------------- */
+#support .supportTime .categoryHead .image {
+width: 247px;
+margin:-20px 0 0 0;
+padding:0 40px 0 0;
+text-align: center;
+}
+#support .supportTime .categoryHead .image .btn {
+position: relative;
+top:30px;
+}
+
+#support .supportTime #time01 .volunteerList {
+width:975px;
+}
+	*+ html #support .supportTime #time01 .volunteerList {
+	margin:0 0 70px 0;
+	}
+#support .supportTime #time01 .volunteerList section {
+float:left;
+width:412px;
+margin:0 75px 70px 0;
+}
+#support .supportTime #time01 .volunteerList section .text {
+float:left;
+width:250px;
+}
+#support .supportTime #time01 .volunteerList section .image {
+float:right;
+padding:5px 0 0 0;
+}
+#support .supportTime #time01 .volunteerList p.otherText {
+float:left;
+width:415px;
+margin:0 0 70px 0;
+color:#dc631f;
+font-weight:bold;
+}
+#support .supportTime #time01 .voiceList {
+overflow:hidden;
+width:900px;
+margin:45px 0 70px 0;
+}
+#support .supportTime #time01 .voiceList ul {
+width:933px;
+}
+#support .supportTime #time01 .voiceList ul li {
+float:left;
+padding:0 34px 0 0;
+}
+#support .supportTime #time01 .btnBox p {
+width:320px;
+padding:0;
+}
+#support .supportTime #time01 .btnBox .btn {
+width:537px;
+padding:5px 0 0 0;
+}
+#support .supportTime #time01 .btnBox .btn p {
+float:none;
+display:inline;
+width:auto;
+padding:0 0 0 20px;
+}
+#support .supportTime .storyBox h2 {
+padding:0 300px 0 0;
+}
+#support .supportTime .storyBox p.btn {
+margin:-50px 0 30px 0;
+text-align:right;
+}
+#support .supportTime .storyBox div {
+overflow:hidden;
+width:900px;
+}
+#support .supportTime .storyBox div div {
+overflow:hidden;
+width:960px;
+margin:0 0 0 -31px;
+}
+#support .supportTime .storyBox div section {
+float:left;
+width:260px;
+padding:0 29px 0 31px;
+background:url(/common/images/bg_dotline01.gif) repeat-y 0 0;
+}
+#support .supportTime .storyBox div section h3 {
+margin:10px 0 5px 0;
+}
+
+/* --------------- company --------------- */
+#support .supportCompany .categoryHead .text {
+width:540px;
+}
+#support .supportCompany .categoryHead .image {
+margin:17px 0 0 0;
+}
+#support .supportCompany #company01 h3 {
+position:relative;
+margin:75px 0 15px 0;
+color:#006934;
+}
+#support .supportCompany #company01 .companyList01 {
+margin:0 0 20px 0;
+}
+#support .supportCompany #company01 .companyList01 .left {
+float:left;
+}
+#support .supportCompany #company01 .companyList01 .left ul.item {
+margin:0 0 15px 0;
+}
+#support .supportCompany #company01 .companyList01 .left ul.item li {
+color:#006934;
+font-weight:bold;
+}
+#support .supportCompany #company01 .companyList01 .right {
+float:right;
+width:565px;
+}
+#support .supportCompany #company01 .companyList01 .right p {
+float:left;
+padding:0 0 0 41px;
+}
+
+
+#support .supportCompany #company01 .companyList02 {
+overflow:hidden;
+width:900px;
+}
+#support .supportCompany #company01 .companyList02 ul {
+overflow:hidden;
+width:968px;
+margin:0 0 -20px -36px;
+}
+#support .supportCompany #company01 .companyList02 ul li {
+float:left;
+width:250px;
+padding:56px 35px 30px 36px;
+border-right:1px solid #ececec;
+border-bottom:1px solid #ececec;
+}
+#support .supportCompany #company01 .companyList02 ul.top li {
+padding:0 35px 30px 36px;
+}
+#support .supportCompany #company01 .companyList02 ul li img {
+margin:0 0 20px 0;
+}
+#support .supportCompany #company01 .companyList02 ul li p {
+color:#006934;
+font-weight:bold;
+text-align:center;
+line-height:1.2;
+}
+#support .supportCompany #company01 .companyList02 ul li p span {
+display:block;
+padding:4px 0 0 0;
+}
+#support .supportCompany .corporateBox h2 {
+padding:0 300px 0 0;
+}
+#support .supportCompany .corporateBox p.btn {
+margin:-50px 0 30px 0;
+text-align:right;
+}
+#support .supportCompany .corporateBox div {
+overflow:hidden;
+width:900px;
+}
+#support .supportCompany .corporateBox div div {
+overflow:hidden;
+width:960px;
+margin:0 0 0 -31px;
+}
+#support .supportCompany .corporateBox div section {
+float:left;
+width:260px;
+padding:0 29px 0 31px;
+background:url(/common/images/bg_dotline01.gif) repeat-y 0 0;
+}
+#support .supportCompany .corporateBox div section h3 {
+margin:10px 0 5px 0;
+}
+
+/* --------------- other --------------- */
+#support .supportOther .categoryHead {
+padding:30px 100px 30px 100px;
+}
+#support .supportOther section {
+position:relative;
+}
+#support .supportOther section.general03 {
+margin:50px 100px 0 100px;
+}
+#support .supportOther .text {
+float:left;
+width:580px;
+padding:0 0 60px 0;
+}
+#support .supportOther .text ul.list02 {
+margin:20px 0 0 0;
+}
+#support .supportOther .text ul.list02 li {
+color:#006934;
+}
+#support .supportOther .image {
+float:right;
+width:300px;
+margin:10px 0 0 0;
+text-align:center;
+}
+#support .supportOther p.button {
+position:absolute;
+left:0;
+bottom:-5px;
+}
+#support .supportOther #other01 p.button {
+left:100px;
+}
+#support .supportOther #other02 .text,
+#support .supportOther #other04 .text {
+padding:0;
+}
+#support .supportOther #other03 p.button {
+position:relative;
+margin:45px 0 0 0;
+bottom:0;
+}
+#support .supportOther #other05 p.button {
+bottom:25px;
+}
+#support .supportOther #other08 .text {
+width:540px;
+padding:0;
+}
+#support .supportOther #other08 .image {
+width:325px;
+margin:50px 0 0 0;
+}
+#support .supportOther #other08 .image p {
+display:inline;
+}
+
+
+
+

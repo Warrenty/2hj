@@ -1,0 +1,108 @@
+@charset "utf-8";
+
+
+/* ================ font-color ================ */
+
+body{
+color:#3e3a39;
+}
+
+a {
+color:#595757;
+text-decoration:underline;
+}
+a:hover {
+text-decoration:none;
+}
+
+/* ================= font-size ================= */
+
+
+/* ----- default size == 14px ----- */
+
+body {
+font-size:88%;
+}
+.fs14{
+font-size:100%!important;
+}
+#problem .problemTop h3,
+#about .outlineArea h3,
+h2,
+#activity h1.archiveTitle,
+h1.txt,
+.fs24 {
+font-size:171%;
+}
+.fs22 {
+font-size:157%;
+}
+.fs20 {
+font-size:142%;
+}
+#support .supportFoodFaq section h2,
+#about .financeReport section h2,
+#activity .eastJapanArea .general03 section .textBox .emText,
+#activity .eastJapanArea .general03 section .textBox h4,
+#activity .eastJapanArea .general03 section p.date,
+#support .supportTime #time01 .volunteerList p.otherText,
+#support .supportDonate .donateBox02 section section h4,
+#problem .problemTop .foodbankArea p,
+#activity .articleArea .leftArea article h1,
+#activity .articleArea .leftArea article h2,
+#support .supportCompany #company01 .companyList02 ul li p,
+#support .supportCompany #company01 .companyList01 ul li p,
+h3,
+.fs18 {
+font-size:128%;
+}
+#about .accessDetail h3,
+#activity .resultArea section section h3,
+#problem .problemTop .problemBox03 .left section h4,
+#about .libraryArea .comicArea .column04 div h4,
+#about .libraryArea .comicArea .column02 div h4,
+.column02 section div h3,
+#about .column02.staffBox section div h2,
+#activity .articleArea .categoryTitle,
+#support .contact,
+.lead,
+ul.link01 li a,
+ul.scroll li a,
+.fs16 {
+font-size:114%;
+}
+.fs15 {
+font-size:107%;
+}
+#problem .foodbankBox03 div div section h3,
+#about .libraryArea .comicArea h3,
+#support .supportTime .storyBox div section h3,
+#support .supportCompany .corporateBox div section h3,
+.fs14 {
+font-size:100%;
+}
+.fs13 {
+font-size:93%
+}
+#activity .articleArea .leftArea article p.date,
+#activity .articleList ul li p.date,
+#top .activityArea ul li p span,
+#top .newsArea ul li span,
+#activity .categoryMenu li a,
+#activity .categoryMenu li span,
+footer,
+header #utilityNav,
+#top .activityArea ul li p.date,
+.fs12 {
+font-size:85%;
+}
+.fs11 {
+font-size:79%;
+}
+#support .supportCompany #company01 .companyList02 ul li p span,
+#about .staffArea .staffBox section div p.job span,
+.fs10 {
+font-size:71%;
+}
+
+

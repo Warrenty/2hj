@@ -1,0 +1,65 @@
+@charset "utf-8";
+
+/* ===================== reset default style ===================== */
+
+body,
+div,
+ul,ol,li,
+h1,h2,h3,h4,h5,h6,
+p,a,
+img,
+table,th,td,
+dl,dt,dd,
+form {
+margin:0;
+padding:0;
+border:0;
+background-color:transparent;
+font-size:100%;
+font-weight:normal;
+font-style:normal;
+}
+table {
+border-collapse:collapse;
+border-spacing:0;
+}
+img {
+border:0;
+vertical-align:bottom;
+}
+address,em,th {
+font-style:normal;
+font-weight:normal;
+}
+li {
+list-style:none;
+}
+caption,th {
+text-align:left;
+}
+h1,h2,h3,h4,h5,h6 {
+font-size:100%;
+font-weight:normal;
+}
+sup {
+vertical-align:text-top;
+}
+sub {
+vertical-align:text-bottom;
+}
+
+
+/*-- for HTML5 --*/
+
+article,
+aside,
+dialog,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+	display: block;
+}
