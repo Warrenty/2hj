@@ -53,6 +53,27 @@ label.error { color: red; }
 <!-- =================================================
  [ script ]
 ================================================= -->
+
+<!-- Date Picker -->
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="datepicker/style.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="datepicker/datepicker-ja.js"></script>
+<script>
+
+$( function() {
+  var datepicker = $( "#pickup_date" );
+  datepicker.datepicker( {minDate: 0,
+      beforeShowDay: function(date) {
+        var day = date.getDay();
+        return [(day == 4 || day == 6)];
+      }
+    }
+  );
+});
+</script>
+
 <!--[if lt IE 9]>
 <script src="/english//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
@@ -523,17 +544,7 @@ label.error { color: red; }
       <input class="required tel" id="phone" maxlength="40" name="phone" size="30" type="text" value="">
       </td>
     </tr>
-    <tr>
-      <td>
-        <span class="ochre">の定義 / Pickup Location</span>
-      </td>
-      <td>
-        <select id="location" name="location">
-          <option value="秋葉原">秋葉原 / Akihabara</option>
-          <option value="浅草橋">浅草橋 / Asakusabashi</option>
-        </select>
-      <td>
-    <tr>
+
     <tr valign="top">
       <td>
         <span class="ochre">家族構成 / Family Information</span>
@@ -610,6 +621,22 @@ label.error { color: red; }
           </tr>        
           <tr>
           </tr></tbody></table>
+        </td>
+      </tr>
+
+      <tr valign="top">
+        <td>
+          <span class="ochre">拾う (?) / Pick-up</span>
+        </td>
+        <td>
+          <span class="ochre">ロケーション (?) / Location: </span>
+          <select id="pickup_location" name="pickup_location">
+            <option value="秋葉原">秋葉原 / Akihabara</option>
+            <option value="浅草橋">浅草橋 / Asakusabashi</option>
+          </select>
+          <span style="display: block; margin-top: 10px">日付 (?) / Date: 
+            <input type="text" id="pickup_date" name="pickup_date">
+          </span>
         </td>
       </tr>
       </tbody></table>
