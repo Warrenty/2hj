@@ -267,7 +267,7 @@ label.error { color: red; }
               <span class="ochre">市区郡 / City/County</span>
             </td>
             <td>
-              <input class="zip" id="zip" maxlength="80" name="zip" size="20" type="text" value="">
+              <input class="city" id="city" maxlength="80" name="city" size="20" type="text" value="">
             </td>
           </tr>
           <tr>
@@ -275,7 +275,7 @@ label.error { color: red; }
               <span class="ochre">町名番地 / Street</span>
             </td>
             <td>
-              <input class="zip" id="zip" maxlength="200" name="zip" size="20" type="text" value="">
+              <input class="street" id="street" maxlength="200" name="street" size="20" type="text" value="">
             </td>
           </tr>
           <!-- <tr>
@@ -529,9 +529,8 @@ label.error { color: red; }
       </td>
       <td>
         <select id="location" name="location">
-          <option value="" selected="">の定義 / Pickup Location</option>
-          <option value="1">Akihabara</option>
-          <option value="2">Asakusabashi</option>
+          <option value="秋葉原">秋葉原 / Akihabara</option>
+          <option value="浅草橋">浅草橋 / Asakusabashi</option>
         </select>
       <td>
     <tr>
@@ -547,7 +546,7 @@ label.error { color: red; }
             <span class="ochre">世帯の人数 / Household Size</span>
           </td>
           <td width="50%">
-          <input class="required" id="emergency_name" maxlength="20" name="emergency_name" size="20" type="text" value="">
+          <input class="required" id="household_size" maxlength="20" name="household_size" size="20" type="text" value="">
           <span>人 / Person(s)</span>
           </td>
         </tr>
