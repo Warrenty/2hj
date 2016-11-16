@@ -57,7 +57,14 @@ label.error { color: red; }
 <script src="datepicker/datepicker-ja.js"></script>
 <script>
 $( function() {
-  $( "#pickup_date" ).datepicker( $.datepicker.regional[ "ja" ] );
+  var datepicker = $( "#pickup_date" );
+  datepicker.datepicker( {minDate: 0,
+      beforeShowDay: function(date) {
+        var day = date.getDay();
+        return [(day != 0 && day !=1 && day !=2 && day !=3 && day !=5)];
+      }
+    }
+  );
 } );
 </script>
 
@@ -282,11 +289,11 @@ $( function() {
             </td>
           </tr>
           <tr>
-            <td>
+            <td valign="top">
               <span class="ochre">町名番地 / Street</span>
             </td>
             <td>
-              <input class="street" id="street" maxlength="200" name="street" size="20" type="text" value="">
+              <textarea id="street" name="street" class="street" maxlength="200" type="text" rows="4" wrap="soft" cols="60"></textarea>
             </td>
           </tr>
           <!-- <tr>
@@ -546,7 +553,7 @@ $( function() {
             <span class="ochre">世帯の人数 / Household Size</span>
           </td>
           <td width="50%">
-          <input class="required" id="household_size" maxlength="20" name="household_size" size="20" type="text" value="">
+          <input class="required" id="household_size" maxlength="20" name="household_size" size="10" type="text" value="">
           <span>人 / Person(s)</span>
           </td>
         </tr>
@@ -555,12 +562,12 @@ $( function() {
             <div class="ochre">世帯員の年齢 / Ages</span>
           </td>
           <td>
-          <input class="required" id="relationship_1" maxlength="10" name="relationship_1" size="20" type="text" value=""> 歳<br>
-          <input class="required" id="relationship_2" maxlength="10" name="relationship_2" size="20" type="text" value=""> 歳<br>
-          <input class="required" id="relationship_3" maxlength="10" name="relationship_3" size="20" type="text" value=""> 歳<br>
-          <input class="required" id="relationship_4" maxlength="10" name="relationship_4" size="20" type="text" value=""> 歳<br>
-          <input class="required" id="relationship_5" maxlength="10" name="relationship_5" size="20" type="text" value=""> 歳<br>
-          <input class="required" id="relationship_6" maxlength="10" name="relationship_6" size="20" type="text" value=""> 歳<br>
+          <input class="required" id="relationship_1" maxlength="10" name="relationship_1" size="10" type="text" value=""> 歳 / Years<br>
+          <input class="required" id="relationship_2" maxlength="10" name="relationship_2" size="10" type="text" value=""> 歳 / Years<br>
+          <input class="required" id="relationship_3" maxlength="10" name="relationship_3" size="10" type="text" value=""> 歳 / Years<br>
+          <input class="required" id="relationship_4" maxlength="10" name="relationship_4" size="10" type="text" value=""> 歳 / Years<br>
+          <input class="required" id="relationship_5" maxlength="10" name="relationship_5" size="10" type="text" value=""> 歳 / Years<br>
+          <input class="required" id="relationship_6" maxlength="10" name="relationship_6" size="10" type="text" value=""> 歳 / Years<br>
           </td>
         </tr>                
         </tbody></table>
@@ -727,15 +734,15 @@ $( function() {
         <table>
         <tbody>
           <tr>
-            <td>電子レンジ / ??</td>
+            <td>電子レンジ / Microwave</td>
             <td><input id="cooking_1" name="cooking_1" type="checkbox"></td>
           </tr>
           <tr>
-            <td>鍋・フライパン / ??</td>
+            <td>鍋・フライパン / Pots and Pans</td>
             <td><input id="cooking_2" name="cooking_2" type="checkbox"></td>
           </tr>
           <tr>
-            <td>炊飯器 / ??</td>
+            <td>炊飯器 / Rice Cooker</td>
             <td><input id="cooking_3" name="cooking_3" type="checkbox"></td>
           </tr>
         </tbody>
@@ -754,7 +761,7 @@ $( function() {
 
       <tr valign="top">
         <td>
-          <span class="ochre">?? / Agency</span>
+          <span class="ochre">代理店 (?) / Agency</span>
           <span class="red">*</span>
         </td>
         <td>
@@ -789,15 +796,16 @@ $( function() {
 
       <tr valign="top">
         <td>
-          <span class="ochre">?? / Pick-up</span>
+          <span class="ochre">拾う (?) / Pick-up</span>
         </td>
         <td>
-          <span class="ochre">?? / Location: </span>
+          <span class="ochre">
+ロケーション (?) / Location: </span>
           <select>
 <option value="鹿児島県">?? / Option 1</option>
 <option value="沖縄県">?? / Option 2</option>
           </select>
-          <span style="margin-left: 20px">?? / Date: 
+          <span style="display: block; margin-top: 10px">日付 (?) / Date: 
             <input type="text" id="pickup_date" name="pickup_date">
           </span>
         </td>
