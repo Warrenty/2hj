@@ -71,15 +71,13 @@ $( function() {
       }
     }
   );
-  // function updateDatepicker() {
-    // console.log('yo');
-    // debugger
-  // }
 });
-var pickup_location = $( "#pickup_location" );
-pickup_location.addEventListener("change", function() {
-  console.log("changed");
-});
+</script>
+<script type="text/javascript">
+  
+  function setDatepickerRestrictions() {
+    console.log('dp', datepicker);
+  }
 </script>
 
 <!--[if lt IE 9]>
@@ -812,7 +810,7 @@ pickup_location.addEventListener("change", function() {
         <td>
           <span class="ochre">
 ロケーション (?) / Location: </span>
-          <select id="pickup_location" name="pickup_location">
+          <select id="pickup_location" name="pickup_location" onchange="setDatepickerRestrictions()">
 <option value="鹿児島県">鹿児島県 / Kagoshima Prefecture</option>
 <option value="沖縄県">沖縄県 / Okinawa Prefecture</option>
           </select>
