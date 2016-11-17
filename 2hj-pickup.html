@@ -55,60 +55,53 @@ label.error { color: red; }
 ================================================= -->
 
 <!-- Date Picker -->
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="jquery-ui-1.12.1.css">
 <link rel="stylesheet" href="datepicker/style.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="jquery_min-1.6.4.js"></script>
+<script src="jquery-ui-1.8.24.js"></script>
 <script src="datepicker/datepicker-ja.js"></script>
-<script>
 
+<script>
 $( function() {
-  var datepicker = $( "#pickup_date" );
-  datepicker.datepicker( {minDate: 0,
-      beforeShowDay: function(date) {
-        var day = date.getDay();
-        return [(day == 4 || day == 6)];
-      }
+  var pickupDays = {
+    鹿児島県: [4, 6],
+    沖縄県: [1, 3, 5]
+  },
+  location = '鹿児島県',
+  datepickerOptions = {
+    minDate: 0,
+    beforeShowDay: function(date) {
+      var day = date.getDay();
+      return [pickupDays[location].indexOf(day) > -1];
     }
-  );
+  }
+
+  $( "#pickup_date" ).datepicker( datepickerOptions );
+
+  document.getElementById('pickup_location').addEventListener("change", function(e) {
+    location = e.target.value;
+  });
 });
 </script>
-<script type="text/javascript">
-  
-  function setDatepickerRestrictions() {
-    console.log('dp', datepicker);
+
+<script>
+  function swapCheckbox() {
+    var checkboxes = document.getElementsByName(event.target.name);
+    if (event.target === checkboxes[0]) {
+      if (checkboxes[0].checked === true) {
+        checkboxes[1].checked = false;
+      }
+    } else {
+      if (checkboxes[1].checked === true) {
+        checkboxes[0].checked = false;
+      }
+    }
   }
 </script>
 
-<!--[if lt IE 9]>
-<script src="/english//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
-<script id="facebook-jssdk" src="//connect.facebook.net/ja_JP/all.js#xfbml=1"></script><script type="text/javascript" src="js/jquery-1.7.1.min.js"></script><script type="text/javascript" src="js/jquery.validate.min.js"></script><script type="text/javascript" src="js/messages_ja.js"></script><script type="text/javascript" src="js/jquery.validate.additional.js"></script><script type="text/javascript" src="js/jquery.zip2addr.js"></script><script>
-    $(document).ready(function() {
-        $("#ContactForm").validate();
-    }); 
-  </script><style type="text/css">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:"lucida grande", tahoma, verdana, arial, "hiragino kaku gothic pro",meiryo,"ms pgothic",sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}.fb_link img{border:none}@keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
-.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_reset .fb_dialog_legacy{overflow:visible}.fb_dialog_advanced{padding:10px;-moz-border-radius:8px;-webkit-border-radius:8px;border-radius:8px}.fb_dialog_content{background:#fff;color:#333}.fb_dialog_close_icon{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;_background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yL/r/s816eWC-2sl.gif);cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{top:5px;left:5px;right:auto}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent;_background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yL/r/s816eWC-2sl.gif)}.fb_dialog_close_icon:active{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent;_background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yL/r/s816eWC-2sl.gif)}.fb_dialog_loader{background-color:#f6f7f9;border:1px solid #606060;font-size:24px;padding:20px}.fb_dialog_top_left,.fb_dialog_top_right,.fb_dialog_bottom_left,.fb_dialog_bottom_right{height:10px;width:10px;overflow:hidden;position:absolute}.fb_dialog_top_left{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 0;left:-10px;top:-10px}.fb_dialog_top_right{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -10px;right:-10px;top:-10px}.fb_dialog_bottom_left{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -20px;bottom:-10px;left:-10px}.fb_dialog_bottom_right{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ye/r/8YeTNIlTZjm.png) no-repeat 0 -30px;right:-10px;bottom:-10px}.fb_dialog_vert_left,.fb_dialog_vert_right,.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{position:absolute;background:#525252;filter:alpha(opacity=70);opacity:.7}.fb_dialog_vert_left,.fb_dialog_vert_right{width:10px;height:100%}.fb_dialog_vert_left{margin-left:-10px}.fb_dialog_vert_right{right:0;margin-right:-10px}.fb_dialog_horiz_top,.fb_dialog_horiz_bottom{width:100%;height:10px}.fb_dialog_horiz_top{margin-top:-10px}.fb_dialog_horiz_bottom{bottom:0;margin-bottom:-10px}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{-webkit-transform:none;height:100%;margin:0;overflow:visible;position:absolute;top:-10000px;left:0;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{width:auto;height:auto;min-height:initial;min-width:initial;background:none}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{color:#fff;display:block;padding-top:20px;clear:both;font-size:18px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .45);position:absolute;bottom:0;left:0;right:0;top:0;width:100%;min-height:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_content .dialog_header{-webkit-box-shadow:white 0 1px 1px -1px inset;background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#738ABA), to(#2C4987));border-bottom:1px solid;border-color:#1d4088;color:#fff;font:14px Helvetica, sans-serif;font-weight:bold;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{-webkit-font-smoothing:subpixel-antialiased;height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#4966A6), color-stop(.5, #355492), to(#2A4887));border:1px solid #29487d;-webkit-background-clip:padding-box;-webkit-border-radius:3px;-webkit-box-shadow:rgba(0, 0, 0, .117188) 0 1px 1px inset, rgba(255, 255, 255, .167969) 0 1px 0;display:inline-block;margin-top:3px;max-width:85px;line-height:18px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{border:none;background:none;color:#fff;font:12px Helvetica, sans-serif;font-weight:bold;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #555;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f6f7f9;border:1px solid #555;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_button{text-shadow:rgba(0, 30, 84, .296875) 0 -1px 0}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://static.xx.fbcdn.net/rsrc.php/v3/yD/r/t-wz8gw1xG1.png);background-repeat:no-repeat;background-position:50% 50%;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
-.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_hide_iframes iframe{position:relative;left:-10000px}.fb_iframe_widget_loader{position:relative;display:inline-block}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}.fb_iframe_widget_loader iframe{min-height:32px;z-index:2;zoom:1}.fb_iframe_widget_loader .FB_Loader{background:url(https://static.xx.fbcdn.net/rsrc.php/v3/y9/r/jKEcVPZFk-2.gif) no-repeat;height:32px;width:32px;margin-left:-16px;position:absolute;left:50%;z-index:4}</style></head>
-
-  
-  
-  
-  
-    
-  
-
+</head>
 
 <body id="support">
-
-<div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe name="fb_xdm_frame_https" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" src="https://staticxx.facebook.com/connect/xd_arbiter/r/fTmIQU3LxvB.js?version=42#channel=f122ea62fe2cfd4&amp;origin=https%3A%2F%2Fwww.2hj.org" style="border: none;"></iframe></div></div></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/ja_JP/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
 
 <!--==================================================================
     container
@@ -191,28 +184,33 @@ $( function() {
         <td  width="70%">
           <table>
           <tbody><tr>
-            <td>
-              <span class="ochre">フリガナ / Furigana</span>
-            </td>
-            <td>
-            <input class="required" id="furigana" maxlength="80" name="furigana" size="20" type="text" value="">
-            </td>
-          </tr><tr>
-            <td>
-              <span class="ochre">?? / Last Name</span>
-            </td>
-            <td>
-            <input class="required" id="last_name" maxlength="80" name="last_name" size="20" type="text" value="">
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <span class="ochre">?? / First Name</span>
-            </td>
-            <td>
-            <input class="required" id="first_name" maxlength="80" name="first_name" size="20" type="text" value="">
-            </td>
-          </tr>        
+            <thead>
+              <tr>
+                <th></th>
+                <th style="padding-left: 20px">Last</th>
+                <th style="padding-left: 20px">First</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="ochre">氏名 / Name</span></td>
+                <td>
+                  <input class="required" id="last_name" maxlength="80" name="last_name" size="20" type="text" value="">
+                </td>
+                <td>
+                  <input class="required" id="first_name" maxlength="80" name="first_name" size="20" type="text" value="">
+                </td>
+              </tr>
+              <tr>
+                <td><span class="ochre">フリガナ / Furigana</span></td>
+                <td>
+                  <input class="required" id="last_name_furigana" maxlength="80" name="last_name_furigana" size="20" type="text" value="">
+                </td>
+                <td>
+                  <input class="required" id="first_name_furigana" maxlength="80" name="first_name_furigana" size="20" type="text" value="">
+                </td>
+              </tr>
+            </tbody>    
           <tr>
           </tr></tbody></table>
         </td>
@@ -305,62 +303,6 @@ $( function() {
               <textarea id="street" name="street" class="street" maxlength="200" type="text" rows="4" wrap="soft" cols="60"></textarea>
             </td>
           </tr>
-          <!-- <tr>
-            <td>
-              <span class="ochre">東京都 / Prefecture/City</span>
-            </td>
-            <td>
-              <input id="prefecture" maxlength="40" name="prefecture" size="35" type="text" value="">
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <span class="ochre">台東区 / City/Ward</span>
-            </td>
-            <td>
-            <input id="ward" maxlength="40" name="ward" size="35" type="text" value="">
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <span class="ochre">浅草橋 / Area</span>
-            </td>
-            <td>
-              <input id="area" maxlength="40" name="area" size="35" type="text" value="">
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <span class="ochre">丁目 / Cho</span>
-            </td>
-            <td>
-              <input id="cho" maxlength="40" name="cho" size="35" type="text" value="">
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <span class="ochre">番 / Ban</span>
-            </td>
-            <td>
-              <input id="ban" maxlength="40" name="ban" size="35" type="text" value="">
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <span class="ochre">号 / Go</span>
-            </td>
-            <td>
-              <input id="go" maxlength="40" name="go" size="35" type="text" value="">
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <span class="ochre">建物名 / Bldg</span>
-            </td>
-            <td>
-              <input id="bldg" maxlength="40" name="bldg" size="35" type="text" value="">
-            </td>
-          </tr> -->
         </tbody></table>
       </td>
     </tr>
@@ -708,54 +650,90 @@ $( function() {
             </tbody>
           </table>
         </td>
-
       </tr>
 
       <tr valign="top">
         <td>
           <span class="ochre">ライフラインの  状況 / Availabilites of Utilities</span>
         </td>
-        <td>
-        <table>
-        <tbody>
-          <tr>
-            <td>ガス / Gas</td>
-            <td><input id="util_1" name="util_1" type="checkbox"></td>
-          </tr>
-          <tr>
-            <td>水道 / Water</td>
-            <td><input id="util_2" name="util_2" type="checkbox"></td>
-          </tr>
-          <tr>
-            <td>電気 / Electricity</td>
-            <td><input id="util_3" name="util_3" type="checkbox"></td>
-          </tr>
-        </tbody>
-        </table>
+        <td width="60%">
+          <table>
+            <thead><tr>
+              <th></th>
+              <th width=27%>
+                <span>有 / Yes</span>
+              </th>
+              <th width=27%>
+                <span>無 / No</span>
+              </th>
+            </tr></thead>
+            <tbody>
+            <tr>
+              <td>
+                <span>ガス / Gas</span>
+              </td>
+              <td><input type="checkbox" name="gas" value="true" onchange="swapCheckbox()"></td>
+              <td><input type="checkbox" name="gas" value="false" onchange="swapCheckbox()"></td>
+            </tr>
+            <tr>
+              <td>
+                <span>水道 / Water</span>
+              </td>
+              <td><input type="checkbox" name="water" value="true" onchange="swapCheckbox()"></td>
+              <td><input type="checkbox" name="water" value="false" onchange="swapCheckbox()"></td>
+            </tr>
+            <tr>
+              <td>
+                <span>電気 / Electricity</span>
+              </td>
+              <td><input type="checkbox" name="electricity" value="true" onchange="swapCheckbox()"></td>
+              <td><input type="checkbox" name="electricity" value="false" onchange="swapCheckbox()"></td>
+            </tr>
+            </tbody>
+          </table>
         </td>
       </tr>
+
 
       <tr valign="top">
         <td>
           <span class="ochre">調理器具 / Availabilites of Cooking Equipment</span>
         </td>
-        <td>
-        <table>
-        <tbody>
-          <tr>
-            <td>電子レンジ / Microwave</td>
-            <td><input id="cooking_1" name="cooking_1" type="checkbox"></td>
-          </tr>
-          <tr>
-            <td>鍋・フライパン / Pots and Pans</td>
-            <td><input id="cooking_2" name="cooking_2" type="checkbox"></td>
-          </tr>
-          <tr>
-            <td>炊飯器 / Rice Cooker</td>
-            <td><input id="cooking_3" name="cooking_3" type="checkbox"></td>
-          </tr>
-        </tbody>
-        </table>
+        <td width="60%">
+          <table>
+            <thead><tr>
+              <th></th>
+              <th width=20%>
+                <span>有 / Yes</span>
+              </th>
+              <th width=20%>
+                <span>無 / No</span>
+              </th>
+            </tr></thead>
+            <tbody>
+            <tr>
+              <td>
+                <span>電子レンジ / Microwave</span>
+              </td>
+              <td><input type="checkbox" name="microwave" value="true" onchange="swapCheckbox()"></td>
+              <td><input type="checkbox" name="microwave" value="false" onchange="swapCheckbox()"></td>
+            </tr>
+            <tr>
+              <td>
+                <span>鍋・フライパン / Pots and Pans</span>
+              </td>
+              <td><input type="checkbox" name="pots_pans" value="true" onchange="swapCheckbox()"></td>
+              <td><input type="checkbox" name="pots_pans" value="false" onchange="swapCheckbox()"></td>
+            </tr>
+            <tr>
+              <td>
+                <span>炊飯器 / Rice Cooker</span>
+              </td>
+              <td><input type="checkbox" name="rice_cooker" value="true" onchange="swapCheckbox()"></td>
+              <td><input type="checkbox" name="rice_cooker" value="false" onchange="swapCheckbox()"></td>
+            </tr>
+            </tbody>
+          </table>
         </td>
       </tr>
 
@@ -770,7 +748,7 @@ $( function() {
 
       <tr valign="top">
         <td>
-          <span class="ochre">代理店 (?) / Agency</span>
+          <span class="ochre">代理店 / Agency</span>
           <span class="red">*</span>
         </td>
         <td>
@@ -810,7 +788,7 @@ $( function() {
         <td>
           <span class="ochre">
 ロケーション (?) / Location: </span>
-          <select id="pickup_location" name="pickup_location" onchange="setDatepickerRestrictions()">
+          <select id="pickup_location" name="pickup_location">
 <option value="鹿児島県">鹿児島県 / Kagoshima Prefecture</option>
 <option value="沖縄県">沖縄県 / Okinawa Prefecture</option>
           </select>
@@ -888,4 +866,4 @@ I acknowledge I need food support and agree to not resell this food donation. If
 </div>
 
 
-<script aria-hidden="true" type="application/x-lastpass" id="hiddenlpsubmitdiv" style="display: none;"></script><script>try{(function() { for(var lastpass_iter=0; lastpass_iter < document.forms.length; lastpass_iter++){ var lastpass_f = document.forms[lastpass_iter]; if(typeof(lastpass_f.lpsubmitorig2)=="undefined"){ lastpass_f.lpsubmitorig2 = lastpass_f.submit; if (typeof(lastpass_f.lpsubmitorig2)=='object'){ continue;}lastpass_f.submit = function(){ var form=this; var customEvent = document.createEvent("Event"); customEvent.initEvent("lpCustomEvent", true, true); var d = document.getElementById("hiddenlpsubmitdiv"); if (d) {for(var i = 0; i < document.forms.length; i++){ if(document.forms[i]==form){ if (typeof(d.innerText) != 'undefined') { d.innerText=i.toString(); } else { d.textContent=i.toString(); } } } d.dispatchEvent(customEvent); }form.lpsubmitorig2(); } } }})()}catch(e){}</script></body></html>
+</body></html>
