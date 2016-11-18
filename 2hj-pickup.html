@@ -110,32 +110,54 @@ $( function() {
 <!-- Validation Script on submit form-->
 <script>
   function validation(form) {
-    debugger
-    if(form.first_name.value == '') {
-      alert('あなたの名前を入力してください / Please enter your first name');
-      form.first_name.focus();
-      return false;
-    }
-
-    if(form.last_name.value == '') {
-      alert('あなたの姓を入力してください / Please enter your last name');
+    var err = false;
+    if(form.last_name.value == '' || form.first_name.value == '') {
       form.last_name.focus();
-      return false;
+      document.getElementById('name_err_msg').hidden = false;
+      err = true;
     }
-
+    if(form.zip.value == '') {
+      form.zip.focus();
+      document.getElementsByName('zip')[0].nextElementSibling.hidden = false;
+      err = true;
+    }
     if(form.email.value == '') {
-      alert('メールアドレスを入力してください / Please enter your email address');
       form.email.focus();
-      return false;
+      document.getElementsByName('email')[0].nextElementSibling.hidden = false;
+      err = true;
+    }
+    if(form.phone.value == '') {
+      form.phone.focus();
+      document.getElementsByName('phone')[0].nextElementSibling.hidden = false;
+      err = true;
+    }
+    if(form['00N5F000006Yz1c'].value == '') {
+      form['00N5F000006Yz1c'].focus();
+      document.getElementsByName('00N5F000006Yz1c')[0].nextElementSibling.hidden = false;
+      err = true;
+    }
+    if(form['00N5F000006Yz0t'].value == '') {
+      form['00N5F000006Yz0t'].focus();
+      document.getElementsByName('00N5F000006Yz0t')[0].nextElementSibling.hidden = false;
+      err = true;
+    }
+    if(form['00N5F000006Yz0u'].value == '') {
+      form['00N5F000006Yz0u'].focus();
+      document.getElementsByName('00N5F000006Yz0u')[0].nextElementSibling.hidden = false;
+      err = true;
+    }
+    if(form['00N5F000006Yz13'].value == '') {
+      form['00N5F000006Yz13'].focus();
+      document.getElementsByName('00N5F000006Yz13')[0].nextElementSibling.hidden = false;
+      err = true;
+    }
+    if(!form.C1.checked) {
+      form.C1.focus();
+      document.getElementById('c1_err_msg').hidden = false;
+      err = true;
     }
 
-    if(form.company.value == '') {
-      alert('あなたの会社を入力してください / Please enter your company');
-      form.company.focus();
-      return false;
-    }
-
-    return true;
+    return err ? false : true;
   }
 </script>
 
@@ -208,7 +230,7 @@ $( function() {
     <div>(下表に対象者情報をご記入願います。*は必須事項です)</div>
   </h4>
 
-    <form id="ContactForm" action="https://www.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
+    <form id="ContactForm" action="https://www.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST" onsubmit="return validation(this);">
       <input type=hidden name="oid" value="00D1000000068QZ">
       <input type=hidden name="retURL" value="http://">
       <p><span class="red">*</span>required field</p>
@@ -237,10 +259,11 @@ $( function() {
               <tr>
                 <td><span class="ochre">氏名 / Name</span></td>
                 <td>
-                  <input class="required" id="last_name" maxlength="80" name="last_name" size="20" type="text" required title="あなたの姓を入力してください">
+                  <input class="required" id="last_name" maxlength="80" name="last_name" size="20" type="text" title="あなたの姓を入力してください">
                 </td>
                 <td>
-                  <input class="required" id="first_name" maxlength="80" name="first_name" size="20" type="text" required title="あなたの名前を入力してください">
+                  <input class="required" id="first_name" maxlength="80" name="first_name" size="20" type="text" title="あなたの名前を入力してください">
+                  <label id = "name_err_msg" generated="true" class="error" hidden> 必須項目です</label>
                 </td>
               </tr>
               <tr>
@@ -269,7 +292,8 @@ $( function() {
               <span class="red">*</span>
             </td>
             <td>
-              <input  id="zip" maxlength="20" name="zip" size="20" type="text" required />
+              <input  id="zip" maxlength="20" name="zip" size="20" type="text" />
+              <label generated="true" class="error" hidden> 必須項目です</label>
             </td>
           </tr>
           <tr>
@@ -492,7 +516,8 @@ $( function() {
         <span class="red">*</span>
       </td>
       <td>
-        <input class="required email" id="email" maxlength="80" name="email" size="30" type="text" value="" required><br>
+        <input class="required email" id="email" maxlength="80" name="email" size="30" type="text" value="">
+        <label generated="true" class="error" hidden> 必須項目です</label>
       </td>
     </tr>
 
@@ -525,7 +550,8 @@ $( function() {
         <span class="red">*</span>
       </td>
       <td>
-      <input class="required tel" id="phone" maxlength="40" name="phone" size="30" type="text" required>
+      <input class="required tel" id="phone" maxlength="40" name="phone" size="30" type="text">
+      <label generated="true" class="error" hidden> 必須項目です</label>
       </td>
     </tr>
     <tr valign="top">
@@ -542,6 +568,7 @@ $( function() {
           <td width="50%">
           <input  id="00N5F000006Yz1c" name="00N5F000006Yz1c" size="20" type="text" />
           <span>人 / Person(s)</span>
+          <label generated="true" class="error" hidden> 必須項目です</label>
           </td>
         </tr>
         <tr>
@@ -770,14 +797,16 @@ $( function() {
               <span class="ochre">紹介機関・番号 / Agency Code</span>
             </td>
             <td>
-              <input  id="00N5F000006Yz0t" maxlength="60" name="00N5F000006Yz0t" size="20" type="text" required/>
+              <input  id="00N5F000006Yz0t" maxlength="60" name="00N5F000006Yz0t" size="20" type="text" />
+              <label generated="true" class="error" hidden> 必須項目です</label>
             </td>
           </tr><tr>
             <td>
               <span class="ochre">ご担当者名 / Name of Official</span>
             </td>
             <td>
-              <input  id="00N5F000006Yz0u" maxlength="60" name="00N5F000006Yz0u" size="20" type="text" required/>
+              <input  id="00N5F000006Yz0u" maxlength="60" name="00N5F000006Yz0u" size="20" type="text"/>
+              <label generated="true" class="error" hidden> 必須項目です</label>
             </td>
           </tr>
           <tr>
@@ -785,7 +814,8 @@ $( function() {
               <span class="ochre">電話番号 / Phone Number</span>
             </td>
             <td>
-              <input  id="00N5F000006Yz13" maxlength="60" name="00N5F000006Yz13" size="20" type="text" required/>
+              <input  id="00N5F000006Yz13" maxlength="60" name="00N5F000006Yz13" size="20" type="text"/>
+              <label generated="true" class="error" hidden> 必須項目です</label>
             </td>
           </tr>
           <tr>
@@ -818,6 +848,8 @@ $( function() {
 <p style="display: inline">私は上記のとおり食料支援を希望します。<br>
 I acknowledge I need food support and agree to not resell this food donation. If I have any questions or get sick I will contact Second Harvest Japan immediately and not the food company.
 </p>
+<label id = "c1_err_msg" generated="true" class="error" hidden> 必須項目です</label>
+
 <br><br>
 
     <p>
