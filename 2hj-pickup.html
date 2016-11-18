@@ -1,6 +1,6 @@
-<html dir="ltr" lang="en"><head>
-
-<meta charset="UTF-8">
+<html dir="ltr" lang="en">
+<head>
+<META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
 <title>Registration｜SECOND HARVEST</title>
 
 
@@ -76,7 +76,7 @@ $( function() {
     }
   }
 
-  $( "#pickup_date" ).datepicker( datepickerOptions );
+  $( ".pickup_date" ).datepicker( datepickerOptions );
 
   document.getElementById('pickup_location').addEventListener("change", function(e) {
     location = e.target.value;
@@ -87,6 +87,7 @@ $( function() {
 <script>
   function swapCheckbox() {
     var checkboxes = document.getElementsByName(event.target.name);
+    debugger;
     if (event.target === checkboxes[0]) {
       if (checkboxes[0].checked === true) {
         checkboxes[1].checked = false;
@@ -96,6 +97,14 @@ $( function() {
         checkboxes[0].checked = false;
       }
     }
+  }
+
+  function setDate() {
+    var year = document.getElementById('year').value;
+    var month = document.getElementById('month').value;
+    var day = document.getElementById('day').value;
+
+    document.getElementsByClassName('dateOfBirth')[0].value = year + month + day;
   }
 </script>
 
@@ -145,7 +154,7 @@ $( function() {
 <!--==================================================================
     contents
 ==================================================================-->
-<div id="contens">
+<div id="contents">
 
 
 
@@ -168,7 +177,9 @@ $( function() {
     <div>(下表に対象者情報をご記入願います。*は必須事項です)</div>
   </h4>
   
-    <form id="ContactForm" action="eng_volunteer_i.php" method="POST" novalidate="novalidate">
+    <form id="ContactForm" action="https://www.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
+      <input type=hidden name="oid" value="00D1000000068QZ">
+      <input type=hidden name="retURL" value="http://">
       <p><span class="red">*</span>required field</p>
         
     <table style="table-layout: fixed;" border="1" ,="" cellspacing="0" cellpadding="5" width="900">
@@ -204,10 +215,10 @@ $( function() {
               <tr>
                 <td><span class="ochre">フリガナ / Furigana</span></td>
                 <td>
-                  <input class="required" id="last_name_furigana" maxlength="80" name="last_name_furigana" size="20" type="text" value="">
+                  <input  id="00N5F000006Yz0o" maxlength="80" name="00N5F000006Yz0o" size="20" type="text" />
                 </td>
                 <td>
-                  <input class="required" id="first_name_furigana" maxlength="80" name="first_name_furigana" size="20" type="text" value="">
+                  <input  id="00N5F000006Yz0y" maxlength="40" name="00N5F000006Yz0y" size="20" type="text" />
                 </td>
               </tr>
             </tbody>    
@@ -227,7 +238,7 @@ $( function() {
               <span class="red">*</span>
             </td>
             <td>
-              <input class="zip" id="zip" maxlength="20" name="zip" size="10" type="text" value="">
+              <input  id="zip" maxlength="20" name="zip" size="20" type="text" />
             </td>
           </tr>
           <tr>
@@ -235,8 +246,7 @@ $( function() {
               <span class="ochre">都道府県 / Prefecture</span>
             </td>
             <td>
-              <select id="prefecture" name="prefecture">
-<option value="" selected="">都道府県を選択</option>
+              <select  id="00N5F000006Yz18" name="00N5F000006Yz18" title="Prefecture">
 <option value="北海道">北海道</option>
 <option value="青森県">青森県</option>
 <option value="岩手県">岩手県</option>
@@ -249,7 +259,7 @@ $( function() {
 <option value="群馬県">群馬県</option>
 <option value="埼玉県">埼玉県</option>
 <option value="千葉県">千葉県</option>
-<option value="東京都">東京都</option>
+<option value="東京都" selected>東京都</option>
 <option value="神奈川県">神奈川県</option>
 <option value="山梨県">山梨県</option>
 <option value="長野県">長野県</option>
@@ -311,8 +321,9 @@ $( function() {
       <td>
         <span class="ochre">生年月日 / Date of Birth</span>
       </td>
+      <input type="hidden" id="00N5F000006Yz1I" name="00N5F000006Yz1I" class="dateOfBirth" size="12" type="text" />
       <td>
-        <select id="year" name="year">
+        <select id="year" name="year" onchange="setDate()">
 <option value="" selected="">年 / year</option>
 <option value="1940/">1940</option>
 <option value="1941/">1941</option>
@@ -392,7 +403,7 @@ $( function() {
 <option value="2015/">2015</option>
 <option value="2016/">2016</option>
 </select>
-<select id="month" name="month">
+<select id="month" name="month" onchange="setDate()">
 <option value="" selected="">月 / month</option>
 <option value="1/">1</option>
 <option value="2/">2</option>
@@ -407,7 +418,7 @@ $( function() {
 <option value="11/">11</option>
 <option value="12/">12</option>
 </select>
-<select id="day" name="day">
+<select id="day" name="day" onchange="setDate()">
 <option value="" selected="">日 / day</option>
 <option value="1">1</option>
 <option value="2">2</option>
@@ -459,18 +470,9 @@ $( function() {
         <span class="ochre">性別 / Gender</span>
       </td>
       <td>
-        <table style="margin-bottom: 0px">
-        <tbody>
-          <tr>
-            <td>男 / Male</td>
-            <td><input class="gender" id="gender" name="gender"type="radio"></td>
-          </tr>
-          <tr>
-            <td>女 / Female</td>
-            <td><input class="gender" id="gender" name="gender"type="radio"></td>
-          </tr>
-        </tbody>
-        </table>
+        <select  id="00N5F000006Yz1S" name="00N5F000006Yz1S" title="Gender"><option value="">--None--</option><option value="男 / Male">男 / Male</option>
+<option value="女 / Female">女 / Female</option>
+</select>
       </td>
     </tr>
 
@@ -479,7 +481,10 @@ $( function() {
         <span class="ochre">国籍 / Nationality</span>
       </td>
       <td>
-      <input class="nationality" id="nationality" maxlength="80" name="nationality" size="30" type="text" value="">
+      <select  id="00N5F000006Yz1X" name="00N5F000006Yz1X" title="Nationality"><option value="">--None--</option><option value="China">China</option>
+<option value="Japan">Japan</option>
+<option value="United States">United States</option>
+</select>
       </td>
     </tr>
 
@@ -504,7 +509,7 @@ $( function() {
             <span class="ochre">世帯の人数 / Household Size</span>
           </td>
           <td width="50%">
-          <input class="required" id="household_size" maxlength="20" name="household_size" size="10" type="text" value="">
+          <input  id="00N5F000006Yz1c" name="00N5F000006Yz1c" size="20" type="text" />
           <span>人 / Person(s)</span>
           </td>
         </tr>
@@ -530,85 +535,62 @@ $( function() {
         </td>
         <td width="60%">
           <table>
-            <thead><tr>
-              <th></th>
-              <th width=20%>
-                <span>??</span><br>
-                <span>None</span>
-              </th>
-              <th width=20%>
-                <span>申請予定</span><br>
-                <span>Will Apply</span>
-              </th>
-              <th width=20%>
-                <span>申請中</span><br>
-                <span>Applied</span>
-              </th>
-              <th width=20%>
-                <span>受給中</span><br>
-                <span>Receiving</span>
-              </th>
-            </tr></thead>
             <tbody>
             <tr>
               <td>
-                <span>生活保護 /</span><br>
-                <span>Welfare</span>
+                <span>生活保護 / Welfare</span>
               </td>
-              <td><input type="radio" name="welfare"></td>
-              <td><input type="radio" name="welfare"></td>
-              <td><input type="radio" name="welfare"></td>
-              <td><input type="radio" name="welfare"></td>
+              <td>
+                <select  id="00N5F000006Yz1h" name="00N5F000006Yz1h" title="生活保護 / Welfare"><option value="">--None--</option><option value="Will Apply">申請予定 / Will Apply</option>
+<option value="Applied">申請中 / Applied</option>
+<option value="Receiving">受給中 / Receiving</option>
+</select>
+              </td>
             </tr>
             <tr>
               <td>
-                <span>年金 /</span><br>
-                <span>Pension</span>
+                <span>年金 / Pension</span>
               </td>
-              <td><input type="radio" name="pension"></td>
-              <td><input type="radio" name="pension"></td>
-              <td><input type="radio" name="pension"></td>
-              <td><input type="radio" name="pension"></td>
+              <td><select  id="00N5F000006Yz1m" name="00N5F000006Yz1m" title="年金 / Pension"><option value="">--None--</option><option value="Will Apply">申請予定 / Will Apply</option>
+<option value="Applied">申請中 / Applied</option>
+<option value="Receiving">受給中 / Receiving</option>
+</select></td>
             </tr>
             <tr>
               <td>
-                <span>障害者年金 /</span><br>
-                <span>Disabilty Assistance</span>
+                <span>障害者年金 / Disabilty Assistance</span>
               </td>
-              <td><input type="radio" name="disability_assistance"></td>
-              <td><input type="radio" name="disability_assistance"></td>
-              <td><input type="radio" name="disability_assistance"></td>
-              <td><input type="radio" name="disability_assistance"></td>
+              <td><select  id="00N5F000006Yz1r" name="00N5F000006Yz1r" title="障害者年金 / Disabilty Assistance"><option value="">--None--</option><option value="Will Apply">申請予定 / Will Apply</option>
+<option value="Applied">申請中 / Applied</option>
+<option value="Receiving">受給中 / Receiving</option>
+</select></td>
             </tr>
             <tr>
               <td>
-                <span>児童扶養手当 /</span><br>
-                <span>Aid for Children</span>
+                <span>児童扶養手当 / Aid for Children</span>
               </td>
-              <td><input type="radio" name="children_aid"></td>
-              <td><input type="radio" name="children_aid"></td>
-              <td><input type="radio" name="children_aid"></td>
-              <td><input type="radio" name="children_aid"></td>
+              <td><select  id="00N5F000006Yz1w" name="00N5F000006Yz1w" title="児童扶養手当 / Aid for Children"><option value="">--None--</option><option value="Will Apply">申請予定 / Will Apply</option>
+<option value="Applied">申請中 / Applied</option>
+<option value="Receiving">受給中 / Receiving</option>
+</select></td>
             </tr>
             <tr>
               <td>
-                <span>住宅確保給付 /</span><br>
-                <span>Housing Assistance</span>
+                <span>住宅確保給付 / Housing Assistance</span>
               </td>
-              <td><input type="radio" name="housing_assistance"></td>
-              <td><input type="radio" name="housing_assistance"></td>
-              <td><input type="radio" name="housing_assistance"></td>
-              <td><input type="radio" name="housing_assistance"></td>
+              <td><select  id="00N5F000006Yz21" name="00N5F000006Yz21" title="住宅確保給付 / Housing Assistance"><option value="">--None--</option><option value="Will Apply">申請予定 / Will Apply</option>
+<option value="Applied">申請中 / Applied</option>
+<option value="Receiving">受給中 / Receiving</option>
+</select></td>
             </tr>
             <tr>
               <td>
-                <span>その他給付 /</span><br>
-                <span>Other Assistance</span>
+                <span>その他給付 / Other Assistance</span>
               </td>
-              <td><input type="radio" name="other_assistance"></td>
-              <td><input type="radio" name="other_assistance"></td>
-              <td><input type="radio" name="other_assistance"></td>
-              <td><input type="radio" name="other_assistance"></td>
+              <td><select  id="00N5F000006Yz26" name="00N5F000006Yz26" title="その他給付 / Other Assistance"><option value="">--None--</option><option value="Will Apply">申請予定 / Will Apply</option>
+<option value="Applied">申請中 / Applied</option>
+<option value="Receiving">受給中 / Receiving</option>
+</select></td>
             </tr>
             </tbody>
           </table>
@@ -617,35 +599,34 @@ $( function() {
             <tbody>
               <tr>
                 <td width="40%">低所得 / Low-income</td>
-                <td width="10%"><input id="low_income" name="low_income" type="checkbox"></td>
+                <td width="10%"><input  id="00N5F000006Yyxf" name="00N5F000006Yyxf" type="checkbox" value="1" /></td>
                 <td width="40%">無職 / Unemployed</td>
-                <td width="10%"><input id="unemployed" name="unemployed" type="checkbox"></td>
+                <td width="10%"><input  id="00N5F000006Yyxk" name="00N5F000006Yyxk" type="checkbox" value="1" /></td>
               </tr>
               <tr>
                 <td width="40%">ひとり親家庭 / Single-parent</td>
-                <td width="10%"><input id="single_parent" name="single_parent" type="checkbox"></td>
+                <td width="10%"><input  id="00N5F000006Yyxp" name="00N5F000006Yyxp" type="checkbox" value="1" /></td>
                 <td width="40%">難民 / Refugee</td>
-                <td width="10%"><input id="refugee" name="refugee" type="checkbox"></td>
+                <td width="10%"><input  id="00N5F000006Yyxu" name="00N5F000006Yyxu" type="checkbox" value="1" /></td>
               </tr>
               <tr>
                 <td width="40%">留学生 / Exchange Student</td>
-                <td width="10%"><input id="exchange_student" name="exchange_student" type="checkbox"></td>
+                <td width="10%"><input  id="00N5F000006Yyxz" name="00N5F000006Yyxz" type="checkbox" value="1" /></td>
                 <td width="40%">所持金わずか / No funds</td>
-                <td width="10%"><input id="no_funds" name="no_funds" type="checkbox"></td>
+                <td width="10%"><input  id="00N5F000006Yyy4" name="00N5F000006Yyy4" type="checkbox" value="1" /></td>
               </tr>
               <tr>
                 <td width="40%">食料がない / No food</td>
-                <td width="10%"><input id="no_food" name="no_food" type="checkbox"></td>
+                <td width="10%"><input  id="00N5F000006Yyy9" name="00N5F000006Yyy9" type="checkbox" value="1" /></td>
                 <td width="40%">病気 / Sickness</td>
-                <td width="10%"><input id="sickness" name="sickness" type="checkbox"></td>
+                <td width="10%"><input  id="00N5F000006YyyE" name="00N5F000006YyyE" type="checkbox" value="1" /></td>
               </tr>
               <tr>
                 <td width="40%">けが / Injury</td>
-                <td width="10%"><input id="injury" name="injury" type="checkbox"></td>
+                <td width="10%"><input  id="00N5F000006YyyE" name="00N5F000006YyyE" type="checkbox" value="1" /></td>
                 <td width="40%">他 / Other
-                  <input id="other_situation_val" name="other_situation_val" type="text" maxlength="80" size="20" value="">
+                  <input  id="00N5F000006YyyY" maxlength="80" name="00N5F000006YyyY" size="20" type="text" />
                 </td>
-                <td width="10%"><input id="other_situation" name="other_situation" type="checkbox"></td>
               </tr>
             </tbody>
           </table>
@@ -672,22 +653,22 @@ $( function() {
               <td>
                 <span>ガス / Gas</span>
               </td>
-              <td><input type="checkbox" name="gas" value="true" onchange="swapCheckbox()"></td>
-              <td><input type="checkbox" name="gas" value="false" onchange="swapCheckbox()"></td>
+              <td><input  id="00N5F000006Yz4v" name="00N5F000006Yz4v" type="checkbox" value="1" onchange="swapCheckbox()"/></td>
+              <td><input type="checkbox" name="00N5F000006Yz4v" value="false" onchange="swapCheckbox()"></td>
             </tr>
             <tr>
               <td>
                 <span>水道 / Water</span>
               </td>
-              <td><input type="checkbox" name="water" value="true" onchange="swapCheckbox()"></td>
-              <td><input type="checkbox" name="water" value="false" onchange="swapCheckbox()"></td>
+              <td><input  id="00N5F000006Yz50" name="00N5F000006Yz50" type="checkbox" value="1" onchange="swapCheckbox()"/></td>
+              <td><input type="checkbox" name="00N5F000006Yz50" value="false" onchange="swapCheckbox()"></td>
             </tr>
             <tr>
               <td>
                 <span>電気 / Electricity</span>
               </td>
-              <td><input type="checkbox" name="electricity" value="true" onchange="swapCheckbox()"></td>
-              <td><input type="checkbox" name="electricity" value="false" onchange="swapCheckbox()"></td>
+              <td><input  id="00N5F000006Yz55" name="00N5F000006Yz55" type="checkbox" value="1" onchange="swapCheckbox()"/></td>
+              <td><input type="checkbox" name="00N5F000006Yz55" value="false" onchange="swapCheckbox()"></td>
             </tr>
             </tbody>
           </table>
@@ -715,22 +696,22 @@ $( function() {
               <td>
                 <span>電子レンジ / Microwave</span>
               </td>
-              <td><input type="checkbox" name="microwave" value="true" onchange="swapCheckbox()"></td>
-              <td><input type="checkbox" name="microwave" value="false" onchange="swapCheckbox()"></td>
+              <td><input  id="00N5F000006Yz1N" name="00N5F000006Yz1N" type="checkbox" value="1" /></td>
+              <td><input type="checkbox" name="00N5F000006Yz1N" value="false" onchange="swapCheckbox()"></td>
             </tr>
             <tr>
               <td>
                 <span>鍋・フライパン / Pots and Pans</span>
               </td>
-              <td><input type="checkbox" name="pots_pans" value="true" onchange="swapCheckbox()"></td>
-              <td><input type="checkbox" name="pots_pans" value="false" onchange="swapCheckbox()"></td>
+              <td><input  id="00N5F000006Yz2B" name="00N5F000006Yz2B" type="checkbox" value="1" /></td>
+              <td><input type="checkbox" name="00N5F000006Yz2B" value="false" onchange="swapCheckbox()"></td>
             </tr>
             <tr>
               <td>
                 <span>炊飯器 / Rice Cooker</span>
               </td>
-              <td><input type="checkbox" name="rice_cooker" value="true" onchange="swapCheckbox()"></td>
-              <td><input type="checkbox" name="rice_cooker" value="false" onchange="swapCheckbox()"></td>
+              <td><input  id="00N5F000006Yz2G" name="00N5F000006Yz2G" type="checkbox" value="1" /></td>
+              <td><input type="checkbox" name="00N5F000006Yz2G" value="false" onchange="swapCheckbox()"></td>
             </tr>
             </tbody>
           </table>
@@ -742,7 +723,7 @@ $( function() {
           <span class="ochre">備考 / Remark</span>
         </td>
         <td>
-          <textarea id="remark" name="remark" type="text" rows="5" wrap="soft" cols="60"></textarea>
+          <textarea  id="00N5F000006Yz1D" name="00N5F000006Yz1D" type="text" wrap="soft"></textarea>
         </td>
       </tr>
 
@@ -758,14 +739,14 @@ $( function() {
               <span class="ochre">紹介機関・番号 / Agency Code</span>
             </td>
             <td>
-            <input class="required" id="agency_code" maxlength="80" name="agency_code" size="20" type="text" value="">
+            <input  id="00N5F000006Yz0t" maxlength="60" name="00N5F000006Yz0t" size="20" type="text" />
             </td>
           </tr><tr>
             <td>
               <span class="ochre">ご担当者名 / Name of Official</span>
             </td>
             <td>
-            <input class="required" id="official_name" maxlength="80" name="official_name" size="20" type="text" value="">
+            <input  id="00N5F000006Yz0u" maxlength="60" name="00N5F000006Yz0u" size="20" type="text" />
             </td>
           </tr>
           <tr>
@@ -773,7 +754,7 @@ $( function() {
               <span class="ochre">電話番号 / Phone Number</span>
             </td>
             <td>
-            <input class="required" id="agency_phone" maxlength="80" name="agency_phone" size="20" type="text" value="">
+            <input  id="00N5F000006Yz13" maxlength="60" name="00N5F000006Yz13" size="20" type="text" />
             </td>
           </tr>        
           <tr>
@@ -788,12 +769,10 @@ $( function() {
         <td>
           <span class="ochre">
 ロケーション (?) / Location: </span>
-          <select id="pickup_location" name="pickup_location">
-<option value="鹿児島県">鹿児島県 / Kagoshima Prefecture</option>
-<option value="沖縄県">沖縄県 / Okinawa Prefecture</option>
-          </select>
-          <span style="display: block; margin-top: 10px">日付 (?) / Date: 
-            <input type="text" id="pickup_date" name="pickup_date">
+          <select  id="00N5F000006Yz0j" name="00N5F000006Yz0j" title="Pickup Location"><option value="">--None--</option><option value="鹿児島県 / Kagoshima Prefecture">鹿児島県 / Kagoshima Prefecture</option>
+<option value="沖縄県 / Okinawa Prefecture">沖縄県 / Okinawa Prefecture</option>
+</select>l
+          <span class="dateInput dateOnlyInput" style="display: block; margin-top: 10px">日付 (?) / Date: <input id="00N5F000006Yz0e" name="00N5F000006Yz0e" class="pickup_date" size="12" type="text" /></span>
           </span>
         </td>
       </tr>
