@@ -19,41 +19,38 @@
 
 
 <style type="text/css">
+  table {
+      margin: 0 0 20px 0;
+  }
+  table td {
+      padding: 10px 20px;
+      border: 1px solid #CCC;
+  }
+  table td table td {
+      padding: 4px 6px;
+      border: none;
+  }
+  .red {
+      color: #FF0000;
+  }
 
-table {
-    margin: 0 0 20px 0;
-}
-table td {
-    padding: 10px 20px;
-    border: 1px solid #CCC;
-}
-table td table td {
-    padding: 4px 6px;
-    border: none;
-}
-.red {
-    color: #FF0000;
-}
+  label.error { color: red; }
 
-label.error { color: red; }
-
-.gt_label {
-    margin: -100px 0 20px 440px;
-}
-.gt_label table {
-    margin: 0 0 10px 190px;
-}
-.gt_label p {
-    font-size: 10px;
-}
-
+  .gt_label {
+      margin: -100px 0 20px 440px;
+  }
+  .gt_label table {
+      margin: 0 0 10px 190px;
+  }
+  .gt_label p {
+      font-size: 10px;
+  }
 </style>
 
 
 <!-- =================================================
  [ script ]
 ================================================= -->
-
 <!-- Date Picker -->
 <link rel="stylesheet" href="jquery-ui-1.12.1.css">
 <link rel="stylesheet" href="datepicker/style.css">
@@ -83,150 +80,7 @@ $( function() {
   });
 });
 </script>
-
-<script>
-  function swapCheckbox() {
-    var checkboxes = document.getElementsByName(event.target.name);
-    if (event.target === checkboxes[0]) {
-      if (checkboxes[0].checked === true) {
-        checkboxes[1].checked = false;
-      }
-    } else {
-      if (checkboxes[1].checked === true) {
-        checkboxes[0].checked = false;
-      }
-    }
-  }
-
-  function setDate() {
-    var year = document.getElementById('year').value;
-    var month = document.getElementById('month').value;
-    var day = document.getElementById('day').value;
-
-    document.getElementsByClassName('dateOfBirth')[0].value = year + month + day;
-  }
-
-  function setAges() {
-    var relationships = [
-      document.getElementById('relationship_1').value,
-      document.getElementById('relationship_2').value,
-      document.getElementById('relationship_3').value,
-      document.getElementById('relationship_4').value,
-      document.getElementById('relationship_5').value,
-      document.getElementById('relationship_6').value
-    ]
-    var ages = '';
-    for (var i = 0; i < relationships.length; i++) {
-      if (relationships[i]) {
-        if (ages.length > 0) {
-          ages += ', ';
-        }
-        ages += relationships[i];
-      }
-    }
-
-    document.getElementsByClassName('ages')[0].value = ages;
-  }
-</script>
-<!-- Validation Script on submit form-->
-<script>
-  function validation(form) {
-    setAges();
-    var err = false;
-    if(form.last_name.value == '' || form.first_name.value == '') {
-      form.last_name.focus();
-      document.getElementById('name_err_msg').hidden = false;
-      err = true;
-    }
-    if(form.zip.value == '') {
-      if (!err) {form.zip.focus();}
-      document.getElementsByName('zip')[0].nextElementSibling.hidden = false;
-      err = true;
-    }
-    if(form['00N5F000006Yz1I'].value == '') {
-      if (!err) {form['00N5F000006Yz1I'].focus();}
-      document.getElementById('dob_err_msg').hidden = false;
-      err = true;
-    }
-    if(form.email.value == '') {
-      if (!err) {form.email.focus();}
-      document.getElementsByName('email')[0].nextElementSibling.hidden = false;
-      err = true;
-    }
-    if(form.phone.value == '') {
-      if (!err) {form.phone.focus();}
-      document.getElementsByName('phone')[0].nextElementSibling.hidden = false;
-      err = true;
-    }
-    if(form['00N5F000006Yz1c'].value == '') {
-      form['00N5F000006Yz1c'].focus();
-      document.getElementsByName('00N5F000006Yz1c')[0].nextElementSibling.hidden = false;
-      err = true;
-    }
-    if(!form['00N5F000006Yz4v'][0].checked && !form['00N5F000006Yz4v'][1].checked) {
-      var targets = document.getElementsByName('00N5F000006Yz4v');
-      if (!err) {form['00N5F000006Yz4v'][0].focus()};
-      targets.forEach(
-        function(el){
-          if (el.localName === 'label') {
-            el.hidden = false;
-          }
-        }
-      )
-      err = true;
-    }
-
-    if(!form['00N5F000006Yz50'][0].checked && !form['00N5F000006Yz50'][1].checked) {
-      var targets = document.getElementsByName('00N5F000006Yz50');
-      if (!err) {form['00N5F000006Yz50'][0].focus()};
-      targets.forEach(
-        function(el){
-          if (el.localName === 'label') {
-            el.hidden = false;
-          }
-        }
-      )
-      err = true;
-    }
-
-    if(!form['00N5F000006Yz55'][0].checked && !form['00N5F000006Yz55'][1].checked) {
-      var targets = document.getElementsByName('00N5F000006Yz55');
-      if (!err) {form['00N5F000006Yz55'][0].focus()};
-      targets.forEach(
-        function(el){
-          if (el.localName === 'label') {
-            el.hidden = false;
-          }
-        }
-      )
-      err = true;
-    }
-    if(!form.C1.checked) {
-      form.C1.focus();
-      document.getElementById('c1_err_msg').hidden = false;
-      err = true;
-    }
-
-    return err ? false : true;
-  }
-</script>
-
-<script type="text/javascript" src="JQuery-Mask/dist/jquery.mask.js"></script>
-<script>
-  window.onload = function() {
-    $('#zip').keyup(function(e){
-      if (this.value.length >= 4) {
-        if (!this.value.includes('-')) {
-          this.value = this.value.slice(0, 3) + '-' + this.value.slice(3);
-        }
-      } else {
-        if (this.value.includes('-')) {
-          this.value = this.value.replace('-','');
-        }
-      }
-    });
-  }
-</script>
+<script src="/pickup-form-controller.js"></script>
 
 </head>
 
@@ -287,7 +141,7 @@ $( function() {
 
 <section class="supportFoodFaq general01">
 
-  <h1 class="txt" style="margin-bottom: 20px">食 料 支 援 案 内 状 / LETTER OF REFERENCE</h1>
+  <h1 class="txt" style="margin-bottom: 20px">食 料 支 援 案 内 状 / PANTRY LETTER OF REFERENCE</h1>
 
   <h4 style="font-size: 16px; margin-bottom: 20px">
     <div>セカンドハーベスト・ジャパン　御中</div>
@@ -328,10 +182,10 @@ $( function() {
               <tr>
                 <td><span class="ochre">氏名 / Name</span></td>
                 <td>
-                  <input class="required" id="last_name" maxlength="80" name="last_name" size="20" type="text" title="あなたの姓を入力してください">
+                  <input class="required" id="last_name" maxlength="80" name="last_name" size="20" type="text">
                 </td>
                 <td>
-                  <input class="required" id="first_name" maxlength="80" name="first_name" size="20" type="text" title="あなたの名前を入力してください">
+                  <input class="required" id="first_name" maxlength="80" name="first_name" size="20" type="text">
                   <label id = "name_err_msg" generated="true" class="error" hidden> 必須項目です</label>
                 </td>
               </tr>
@@ -448,7 +302,7 @@ $( function() {
       </td>
       <input type="hidden" id="00N5F000006Yz1I" name="00N5F000006Yz1I" class="dateOfBirth" size="12" type="text" />
       <td>
-        <select id="year" name="year" onchange="setDate()">
+        <select id="year" name="year" onchange=" ()">
           <option value="" selected="">年 / year</option>
           <option value="1940/">1940</option>
           <option value="1941/">1941</option>
@@ -656,9 +510,9 @@ $( function() {
           </td>
         </tr>
         </tbody></table>
-
-
-      </td></tr><tr valign="top">
+      </td>
+    </tr>
+      <tr valign="top">
         <td>
           <span class="ochre">申込時の状況（状況を知る目的であり、支援可否を決めるものではありません）/ Description of Current Situation</span>
         </td>
@@ -902,12 +756,13 @@ $( function() {
           <span class="ochre">拾う (?) / Pick-up</span>
         </td>
         <td>
-          <span class="ochre">
-ロケーション (?) / Location: </span>
+          <span class="ochre">ロケーション (?) / Location: </span>
           <select  id="00N5F000006Yz0j" name="00N5F000006Yz0j" title="Pickup Location"><option value="">--None--</option><option value="鹿児島県 / Kagoshima Prefecture">鹿児島県 / Kagoshima Prefecture</option>
             <option value="沖縄県 / Okinawa Prefecture">沖縄県 / Okinawa Prefecture</option>
           </select>
-          <span class="dateInput dateOnlyInput" style="display: block; margin-top: 10px">日付 (?) / Date: <input id="00N5F000006Yz0e" name="00N5F000006Yz0e" class="pickup_date" size="12" type="text" /></span>
+          <span class="dateInput dateOnlyInput" style="display: block; margin-top: 10px">
+            日付 (?) / Date:
+            <input id="00N5F000006Yz0e" name="00N5F000006Yz0e" class="pickup_date" size="12" type="text" />
           </span>
         </td>
       </tr>
