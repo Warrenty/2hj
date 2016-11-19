@@ -87,7 +87,6 @@ $( function() {
 <script>
   function swapCheckbox() {
     var checkboxes = document.getElementsByName(event.target.name);
-    debugger;
     if (event.target === checkboxes[0]) {
       if (checkboxes[0].checked === true) {
         checkboxes[1].checked = false;
@@ -106,10 +105,33 @@ $( function() {
 
     document.getElementsByClassName('dateOfBirth')[0].value = year + month + day;
   }
+
+  function setAges() {
+    var relationships = [
+      document.getElementById('relationship_1').value,
+      document.getElementById('relationship_2').value,
+      document.getElementById('relationship_3').value,
+      document.getElementById('relationship_4').value,
+      document.getElementById('relationship_5').value,
+      document.getElementById('relationship_6').value
+    ]
+    var ages = '';
+    for (var i = 0; i < relationships.length; i++) {
+      if (relationships[i]) {
+        if (ages.length > 0) {
+          ages += ', ';
+        }
+        ages += relationships[i];
+      }
+    }
+
+    document.getElementsByClassName('ages')[0].value = ages;
+  }
 </script>
 <!-- Validation Script on submit form-->
 <script>
   function validation(form) {
+    setAges();
     var err = false;
     if(form.last_name.value == '' || form.first_name.value == '') {
       form.last_name.focus();
@@ -117,17 +139,22 @@ $( function() {
       err = true;
     }
     if(form.zip.value == '') {
-      form.zip.focus();
+      if (!err) {form.zip.focus();}
       document.getElementsByName('zip')[0].nextElementSibling.hidden = false;
       err = true;
     }
+    if(form['00N5F000006Yz1I'].value == '') {
+      if (!err) {form['00N5F000006Yz1I'].focus();}
+      document.getElementById('dob_err_msg').hidden = false;
+      err = true;
+    }
     if(form.email.value == '') {
-      form.email.focus();
+      if (!err) {form.email.focus();}
       document.getElementsByName('email')[0].nextElementSibling.hidden = false;
       err = true;
     }
     if(form.phone.value == '') {
-      form.phone.focus();
+      if (!err) {form.phone.focus();}
       document.getElementsByName('phone')[0].nextElementSibling.hidden = false;
       err = true;
     }
@@ -136,19 +163,42 @@ $( function() {
       document.getElementsByName('00N5F000006Yz1c')[0].nextElementSibling.hidden = false;
       err = true;
     }
-    if(form['00N5F000006Yz0t'].value == '') {
-      form['00N5F000006Yz0t'].focus();
-      document.getElementsByName('00N5F000006Yz0t')[0].nextElementSibling.hidden = false;
+    if(!form['00N5F000006Yz4v'][0].checked && !form['00N5F000006Yz4v'][1].checked) {
+      var targets = document.getElementsByName('00N5F000006Yz4v');
+      if (!err) {form['00N5F000006Yz4v'][0].focus()};
+      targets.forEach(
+        function(el){
+          if (el.localName === 'label') {
+            el.hidden = false;
+          }
+        }
+      )
       err = true;
     }
-    if(form['00N5F000006Yz0u'].value == '') {
-      form['00N5F000006Yz0u'].focus();
-      document.getElementsByName('00N5F000006Yz0u')[0].nextElementSibling.hidden = false;
+
+    if(!form['00N5F000006Yz50'][0].checked && !form['00N5F000006Yz50'][1].checked) {
+      var targets = document.getElementsByName('00N5F000006Yz50');
+      if (!err) {form['00N5F000006Yz50'][0].focus()};
+      targets.forEach(
+        function(el){
+          if (el.localName === 'label') {
+            el.hidden = false;
+          }
+        }
+      )
       err = true;
     }
-    if(form['00N5F000006Yz13'].value == '') {
-      form['00N5F000006Yz13'].focus();
-      document.getElementsByName('00N5F000006Yz13')[0].nextElementSibling.hidden = false;
+
+    if(!form['00N5F000006Yz55'][0].checked && !form['00N5F000006Yz55'][1].checked) {
+      var targets = document.getElementsByName('00N5F000006Yz55');
+      if (!err) {form['00N5F000006Yz55'][0].focus()};
+      targets.forEach(
+        function(el){
+          if (el.localName === 'label') {
+            el.hidden = false;
+          }
+        }
+      )
       err = true;
     }
     if(!form.C1.checked) {
@@ -158,6 +208,23 @@ $( function() {
     }
 
     return err ? false : true;
+  }
+</script>
+
+<script type="text/javascript" src="JQuery-Mask/dist/jquery.mask.js"></script>
+<script>
+  window.onload = function() {
+    $('#zip').keyup(function(e){
+      if (this.value.length >= 4) {
+        if (!this.value.includes('-')) {
+          this.value = this.value.slice(0, 3) + '-' + this.value.slice(3);
+        }
+      } else {
+        if (this.value.includes('-')) {
+          this.value = this.value.replace('-','');
+        }
+      }
+    });
   }
 </script>
 
@@ -233,6 +300,8 @@ $( function() {
     <form id="ContactForm" action="https://www.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST" onsubmit="return validation(this);">
       <input type=hidden name="oid" value="00D1000000068QZ">
       <input type=hidden name="retURL" value="http://">
+      <input type=hidden id="00N5F000006YzCV" maxlength="64" name="00N5F000006YzCV" size="20" type="text" value="Pickup"/><br>
+      <input type=hidden id="00N5F000006YzCa" maxlength="128" name="00N5F000006YzCa" size="20" type="text" class="ages"/>
       <p><span class="red">*</span>required field</p>
 
     <table style="table-layout: fixed;" border="1" ,="" cellspacing="0" cellpadding="5" width="900">
@@ -292,7 +361,7 @@ $( function() {
               <span class="red">*</span>
             </td>
             <td>
-              <input  id="zip" maxlength="20" name="zip" size="20" type="text" />
+              <input  id="zip" maxlength="8" name="zip" size="20" type="text" />
               <label generated="true" class="error" hidden> 必須項目です</label>
             </td>
           </tr>
@@ -354,7 +423,7 @@ $( function() {
           </tr>
           <tr>
             <td>
-              <span class="ochre">市区郡 / City/County</span>
+              <span class="ochre">市区郡 / City/Ward</span>
             </td>
             <td>
               <input class="city" id="city" maxlength="80" name="city" size="20" type="text" value="">
@@ -375,6 +444,7 @@ $( function() {
     <tr valign="top">
       <td>
         <span class="ochre">生年月日 / Date of Birth</span>
+        <span class="red">*</span>
       </td>
       <input type="hidden" id="00N5F000006Yz1I" name="00N5F000006Yz1I" class="dateOfBirth" size="12" type="text" />
       <td>
@@ -459,54 +529,55 @@ $( function() {
           <option value="2016/">2016</option>
           </select>
           <select id="month" name="month" onchange="setDate()">
-          <option value="" selected="">月 / month</option>
-          <option value="1/">1</option>
-          <option value="2/">2</option>
-          <option value="3/">3</option>
-          <option value="4/">4</option>
-          <option value="5/">5</option>
-          <option value="6/">6</option>
-          <option value="7/">7</option>
-          <option value="8/">8</option>
-          <option value="9/">9</option>
-          <option value="10/">10</option>
-          <option value="11/">11</option>
-          <option value="12/">12</option>
+            <option value="" selected="">月 / month</option>
+            <option value="1/">1</option>
+            <option value="2/">2</option>
+            <option value="3/">3</option>
+            <option value="4/">4</option>
+            <option value="5/">5</option>
+            <option value="6/">6</option>
+            <option value="7/">7</option>
+            <option value="8/">8</option>
+            <option value="9/">9</option>
+            <option value="10/">10</option>
+            <option value="11/">11</option>
+            <option value="12/">12</option>
           </select>
           <select id="day" name="day" onchange="setDate()">
-          <option value="" selected="">日 / day</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="7">7</option>
-          <option value="8">8</option>
-          <option value="9">9</option>
-          <option value="10">10</option>
-          <option value="11">11</option>
-          <option value="12">12</option>
-          <option value="13">13</option>
-          <option value="14">14</option>
-          <option value="15">15</option>
-          <option value="16">16</option>
-          <option value="17">17</option>
-          <option value="18">18</option>
-          <option value="19">19</option>
-          <option value="20">20</option>
-          <option value="21">21</option>
-          <option value="22">22</option>
-          <option value="23">23</option>
-          <option value="24">24</option>
-          <option value="25">25</option>
-          <option value="26">26</option>
-          <option value="27">27</option>
-          <option value="28">28</option>
-          <option value="29">29</option>
-          <option value="30">30</option>
-          <option value="31">31</option>
+            <option value="" selected="">日 / day</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+            <option value="13">13</option>
+            <option value="14">14</option>
+            <option value="15">15</option>
+            <option value="16">16</option>
+            <option value="17">17</option>
+            <option value="18">18</option>
+            <option value="19">19</option>
+            <option value="20">20</option>
+            <option value="21">21</option>
+            <option value="22">22</option>
+            <option value="23">23</option>
+            <option value="24">24</option>
+            <option value="25">25</option>
+            <option value="26">26</option>
+            <option value="27">27</option>
+            <option value="28">28</option>
+            <option value="29">29</option>
+            <option value="30">30</option>
+            <option value="31">31</option>
           </select>
+          <label id = "dob_err_msg" generated="true" class="error" hidden> 必須項目です</label>
       </td>
     </tr>
 
@@ -576,12 +647,12 @@ $( function() {
             <div class="ochre">世帯員の年齢 / Ages</span>
           </td>
           <td>
-          <input class="required" id="relationship_1" maxlength="10" name="relationship_1" size="10" type="text" value=""> 歳 / Years<br>
-          <input class="required" id="relationship_2" maxlength="10" name="relationship_2" size="10" type="text" value=""> 歳 / Years<br>
-          <input class="required" id="relationship_3" maxlength="10" name="relationship_3" size="10" type="text" value=""> 歳 / Years<br>
-          <input class="required" id="relationship_4" maxlength="10" name="relationship_4" size="10" type="text" value=""> 歳 / Years<br>
-          <input class="required" id="relationship_5" maxlength="10" name="relationship_5" size="10" type="text" value=""> 歳 / Years<br>
-          <input class="required" id="relationship_6" maxlength="10" name="relationship_6" size="10" type="text" value=""> 歳 / Years<br>
+          <input class="required" id="relationship_1" maxlength="10" name="relationship_1" size="10" type="text"> 歳 / Years<br>
+          <input class="required" id="relationship_2" maxlength="10" name="relationship_2" size="10" type="text"> 歳 / Years<br>
+          <input class="required" id="relationship_3" maxlength="10" name="relationship_3" size="10" type="text"> 歳 / Years<br>
+          <input class="required" id="relationship_4" maxlength="10" name="relationship_4" size="10" type="text"> 歳 / Years<br>
+          <input class="required" id="relationship_5" maxlength="10" name="relationship_5" size="10" type="text"> 歳 / Years<br>
+          <input class="required" id="relationship_6" maxlength="10" name="relationship_6" size="10" type="text"> 歳 / Years<br>
           </td>
         </tr>
         </tbody></table>
@@ -646,9 +717,9 @@ $( function() {
                 <span>その他給付 / Other Assistance</span>
               </td>
               <td><select  id="00N5F000006Yz26" name="00N5F000006Yz26" title="その他給付 / Other Assistance"><option value="">--None--</option><option value="Will Apply">申請予定 / Will Apply</option>
-<option value="Applied">申請中 / Applied</option>
-<option value="Receiving">受給中 / Receiving</option>
-</select></td>
+                <option value="Applied">申請中 / Applied</option>
+                <option value="Receiving">受給中 / Receiving</option>
+                </select></td>
             </tr>
             </tbody>
           </table>
@@ -694,6 +765,7 @@ $( function() {
       <tr valign="top">
         <td>
           <span class="ochre">ライフラインの  状況 / Availabilites of Utilities</span>
+          <span class="red">*</span>
         </td>
         <td width="60%">
           <table>
@@ -713,6 +785,7 @@ $( function() {
               </td>
               <td><input  id="00N5F000006Yz4v" name="00N5F000006Yz4v" type="checkbox" value="1" onchange="swapCheckbox()"/></td>
               <td><input type="checkbox" name="00N5F000006Yz4v" value="false" onchange="swapCheckbox()"></td>
+              <td><label generated="true" name="00N5F000006Yz4v" class="error" hidden> 必須項目です</label></td>
             </tr>
             <tr>
               <td>
@@ -720,6 +793,7 @@ $( function() {
               </td>
               <td><input  id="00N5F000006Yz50" name="00N5F000006Yz50" type="checkbox" value="1" onchange="swapCheckbox()"/></td>
               <td><input type="checkbox" name="00N5F000006Yz50" value="false" onchange="swapCheckbox()"></td>
+              <td><label generated="true" name="00N5F000006Yz50" class="error" hidden> 必須項目です</label></td>
             </tr>
             <tr>
               <td>
@@ -727,6 +801,7 @@ $( function() {
               </td>
               <td><input  id="00N5F000006Yz55" name="00N5F000006Yz55" type="checkbox" value="1" onchange="swapCheckbox()"/></td>
               <td><input type="checkbox" name="00N5F000006Yz55" value="false" onchange="swapCheckbox()"></td>
+              <td><label generated="true" name="00N5F000006Yz55" class="error" hidden> 必須項目です</label></td>
             </tr>
             </tbody>
           </table>
@@ -754,7 +829,7 @@ $( function() {
               <td>
                 <span>電子レンジ / Microwave</span>
               </td>
-              <td><input  id="00N5F000006Yz1N" name="00N5F000006Yz1N" type="checkbox" value="1" /></td>
+              <td><input id="00N5F000006Yz1N" name="00N5F000006Yz1N" type="checkbox" value="1" /></td>
               <td><input type="checkbox" name="00N5F000006Yz1N" value="false" onchange="swapCheckbox()"></td>
             </tr>
             <tr>
@@ -788,7 +863,6 @@ $( function() {
       <tr valign="top">
         <td>
           <span class="ochre">代理店 / Agency</span>
-          <span class="red">*</span>
         </td>
         <td>
           <table>
